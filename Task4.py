@@ -4,11 +4,11 @@ It's ok if you don't understand how to read files.
 """
 import csv
 
-with open('texts.csv', 'r') as f:
+with open('_data/texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
 
-with open('calls.csv', 'r') as f:
+with open('_data/calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
 
