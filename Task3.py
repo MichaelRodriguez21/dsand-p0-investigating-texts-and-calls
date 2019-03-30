@@ -43,3 +43,54 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+def get_telephone_type(tel_num):
+  if tel_num.startswith('(0') and tel_num.find(')') != -1:
+    return 'fixed'
+  elif (tel_num.startswith('7') or tel_num.startswith('8') or tel_num.startswith('9')) and ' ' in tel_num:
+    return 'mobile'
+  elif tel_num.startswith('140'):
+    return 'telemarketers'
+  else:
+    return None
+
+def extract_area_code(tel_num, tel_type):
+
+  if tel_type == 'fixed':
+    return tel_num[1:tel_num.find(')')]
+  elif tel_type == 'mobile':
+    return tel_num[0:4]
+  elif tel_type == 'telemarketers':
+    return '140'
+  else:
+    return None
+
+def extract_receiver_area_codes(calls, caller_prefix, duplicates=False):
+  area_codes = []
+  for call in calls:
+    if call[0].startswith('{}'.format(caller_prefix)): # telephone callers
+      tel_type = get_telephone_type(call[1])
+      area_code = extract_area_code(call[1], tel_type)
+      if area_code:
+        if duplicates:
+          area_codes.append(area_code)
+        else:
+          if area_code not in area_codes:
+            area_codes.append(area_code)
+  return area_codes
+
+def get_number_of_calls(calls, caller_prefix, receiver_area_code):
+  number_of_calls = 0
+  area_codes = extract_receiver_area_codes(calls, caller_prefix, duplicates=True)
+  for area_code in area_codes:
+    if area_code == receiver_area_code:
+      number_of_calls += 1
+  return (number_of_calls, len(area_codes)) # tuple returned (number of calls for specific area code, total number of calls)
+
+def calc_percentage(ratio):
+  return round(ratio[0] / ratio[1] *100, 2)
+
+def get_percentage_of_calls(calls, caller_prefix, receiver_area_code):
+  return calc_percentage(get_number_of_calls(calls, caller_prefix, receiver_area_code))
+
+print('The numbers called by people in Bangalore have codes: {}'.format(extract_receiver_area_codes(calls, '(080)')))
+print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(get_percentage_of_calls(calls, '(080)', '080')))
