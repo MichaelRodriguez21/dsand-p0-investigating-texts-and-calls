@@ -43,6 +43,9 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
+# Run time analysis: 
+#   O(n) = n
+
 def get_telephone_type(tel_num):
   if tel_num.startswith('(0') and tel_num.find(')') != -1:
     return 'fixed'

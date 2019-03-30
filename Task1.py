@@ -18,6 +18,9 @@ How many different telephone numbers are there in the records?
 Print a message:
 "There are <count> different telephone numbers in the records."
 """
+# Run time analysis: 
+#   O(n) = n
+
 unique_tel_numbers = []
 
 for text in texts:

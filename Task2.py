@@ -20,6 +20,9 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
+# Run time analysis: 
+#   O(n) = n
+
 # initalizing a tuple of three items (telephone number, call duration, start of telephone call)
 longest_call = (calls[0][1], int(calls[0][3]), calls[0][2])
 

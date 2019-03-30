@@ -24,6 +24,9 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
+# Run time analysis: 
+#   O(n) = n^2
+
 def get_all_senders(log, duplicates=False):
     senders = []
     for record in log:
