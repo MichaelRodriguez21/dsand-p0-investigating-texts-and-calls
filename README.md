@@ -46,7 +46,7 @@ There are 570 different telephone numbers in the records.
 Which telephone number spent the longest time on the phone during the period? Don't forget that time spent answering a call is also time spent on the phone.
 ```
 $ python Task2.py
-(04546)388977 spent the longest time, 4617 seconds, on the phone during September 2016.
+(080)33251027 spent the longest time, 90456 seconds, on the phone during September 2016.
 ```
 ### TASK 3:
 (080) is the area code for fixed line telephones in Bangalore. Fixed line numbers include parentheses, so Bangalore numbers have the form (080)xxxxxxx.

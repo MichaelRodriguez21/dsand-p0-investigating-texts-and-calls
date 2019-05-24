@@ -24,8 +24,6 @@ Print a message:
 <list of numbers>
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
-# Run time analysis: 
-#   O(n) = n^2
 
 def get_all_senders(log, duplicates=False):
     senders = []
@@ -70,4 +68,4 @@ def get_telemarketers(calls, texts, duplicates=False):
             telemarketers.append(sender)
     return telemarketers
 
-print('These numbers could be telemarketers: {}'.format(sorted(get_telemarketers(calls,texts))))
+print('These numbers could be telemarketers: \n{}'.format('\n'.join(sorted(get_telemarketers(calls,texts)))))

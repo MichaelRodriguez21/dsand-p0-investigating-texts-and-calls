@@ -19,8 +19,6 @@ Print messages:
 "First record of texts, <incoming number> texts <answering number> at time <time>"
 "Last record of calls, <incoming number> calls <answering number> at time <time>, lasting <during> seconds"
 """
-# Run time analysis: 
-#   O(n) = 1
 
 first_text = texts[0]
 last_call = calls[-1]

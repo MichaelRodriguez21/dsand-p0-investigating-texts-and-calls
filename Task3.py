@@ -43,8 +43,6 @@ Print the answer as a part of a message::
 to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
-# Run time analysis: 
-#   O(n) = n
 
 def get_telephone_type(tel_num):
   if tel_num.startswith('(0') and tel_num.find(')') != -1:
@@ -57,7 +55,6 @@ def get_telephone_type(tel_num):
     return None
 
 def extract_area_code(tel_num, tel_type):
-
   if tel_type == 'fixed':
     return tel_num[1:tel_num.find(')')]
   elif tel_type == 'mobile':
@@ -95,5 +92,5 @@ def calc_percentage(ratio):
 def get_percentage_of_calls(calls, caller_prefix, receiver_area_code):
   return calc_percentage(get_number_of_calls(calls, caller_prefix, receiver_area_code))
 
-print('The numbers called by people in Bangalore have codes: {}'.format(extract_receiver_area_codes(calls, '(080)')))
+print('The numbers called by people in Bangalore have codes: \n{}'.format('\n'.join(extract_receiver_area_codes(calls, '(080)'))))
 print('{} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.'.format(get_percentage_of_calls(calls, '(080)', '080')))

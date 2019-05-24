@@ -2,6 +2,7 @@
 Read file into texts and calls.
 It's ok if you don't understand how to read files
 """
+from collections import defaultdict
 import csv
 from datetime import datetime
 with open('_data/texts.csv', 'r') as f:
@@ -20,15 +21,18 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-# Run time analysis: 
-#   O(n) = n
+telephone_numbers = dict()
+most_spent_duration = 0
+most_spent_number = None
+for i in range(len(calls)):
+    telephone_numbers[calls[i][0]] = telephone_numbers.get(calls[i][0], 0) + int(calls[i][-1])
+    telephone_numbers[calls[i][1]] = telephone_numbers.get(calls[i][1], 0) + int(calls[i][-1])
+    if telephone_numbers[calls[i][0]] > most_spent_duration:
+        most_spent_number = calls[i][0]
+        most_spent_duration = telephone_numbers[calls[i][0]]
+    if telephone_numbers[calls[i][1]] > most_spent_duration:
+        most_spent_number = calls[i][1]
+        most_spent_duration = telephone_numbers[calls[i][1]]
 
-# initalizing a tuple of three items (telephone number, call duration, start of telephone call)
-longest_call = (calls[0][1], int(calls[0][3]), calls[0][2])
-
-for call in calls:
-    if longest_call[1] < int(call[3]):
-        longest_call = (call[1], int(call[3]), call[2])
-
-telephone_formatted_date = datetime.strftime(datetime.strptime(longest_call[2], '%d-%m-%Y %H:%M:%S'), '%B %Y')
-print("{} spent the longest time, {} seconds, on the phone during {}.".format(longest_call[0], longest_call[1], telephone_formatted_date))
+# number_with_max_time = sorted(telephone_numbers, reverse=True, key=lambda x: telephone_numbers[x])[0]
+print("{} spent the longest time, {} seconds, on the phone during September 2016.".format(most_spent_number, most_spent_duration))
